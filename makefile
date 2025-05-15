@@ -3,19 +3,14 @@
 CC = gcc
 CFLAGS = -Wall -g
 DEPS = oss.h
-OBJ_OSS = oss.o
-OBJ_USER = user.o
 
 all: oss user
 
-oss: $(OBJ_OSS)
-	$(CC) $(CFLAGS) -o $@ $^
+oss: oss.c $(DEPS)
+	$(CC) $(CFLAGS) -o oss oss.c
 
-user: $(OBJ_USER)
-	$(CC) $(CFLAGS) -o $@ $^
-
-%.o: %.c $(DEPS)
-	$(CC) $(CFLAGS) -c -o $@ $
+user: user.c $(DEPS)
+	$(CC) $(CFLAGS) -o user user.c
 
 clean:
 	rm -f *.o oss user *.log

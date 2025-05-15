@@ -2,6 +2,7 @@
 #include "oss.h"
 #include <getopt.h>
 #include <sys/time.h>
+#include <limits.h>  // Added for UINT_MAX
 
 // Global variables
 SharedMemory *shm;
@@ -255,11 +256,11 @@ void handleMemoryRequest(int procIndex, int address, bool isWrite) {
         
         fprintf(logfile, "oss: Address %d in frame %d, %s at time %u:%u\n", 
                 address, frameIndex, 
-                isWrite ? "writing data to frame" : "giving data to P" + procIndex, 
+                isWrite ? "writing data to frame" : "giving data to P", 
                 shm->clock.seconds, shm->clock.nanoseconds);
         fprintf(stdout, "oss: Address %d in frame %d, %s at time %u:%u\n", 
                 address, frameIndex, 
-                isWrite ? "writing data to frame" : "giving data to P" + procIndex, 
+                isWrite ? "writing data to frame" : "giving data to P", 
                 shm->clock.seconds, shm->clock.nanoseconds);
         
         // Increment clock for memory access

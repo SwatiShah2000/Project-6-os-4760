@@ -15,6 +15,7 @@
 #include <time.h>
 #include <string.h>
 #include <stdbool.h>
+#include <limits.h>
 
 #define SHM_KEY 0x1234        // Key for shared memory
 #define MSG_KEY 0x5678        // Key for message queue
@@ -89,8 +90,8 @@ typedef struct {
 
 // Function prototypes
 void incrementClock(SimClock *clock, unsigned int nanoseconds);
-void displayMemoryMap(SharedMemory *shm, FILE *logfile);
-int findLRUFrame(FrameTableEntry *frameTable);
+void displayMemoryMap(FILE *logfile);
+int findLRUFrame();
 void initSharedMemory(SharedMemory *shm);
 void cleanupResources(int shmid, int msqid);
 
